@@ -1,0 +1,52 @@
+﻿@model Book;
+@{
+    Layout = null;
+}
+<h4>Book</h4>
+<div class="edit-block">
+    @using (Html.BeginForm("Create", "Home"))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <div class="dataBox">
+            <label>Название книги</label><br />
+            @Html.TextBoxFor(m => m.Title, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Автор</label><br />
+            @Html.TextBoxFor(m => m.Author, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Год издания</label><br />
+            @Html.TextBoxFor(m => m.Year, "2020", new
+            {
+                type = "number",
+                @class ="text-box"
+            })
+        </div>
+        <div class="dataBox">
+            <label>Жанр</label><br />
+            @Html.DropDownList("Genre",
+            new SelectList(new string[] { "Не_определен", "Детектив", "Фантастика", "Фентези", "Роман", "Учебник" }), "")
+        </div>
+        <div class="dataBox">
+            <label>Издательство</label><br />
+            @Html.DropDownListFor(m => m.PublisherId, ViewBag.Publishers as SelectList)
+        </div>
+        @*<div class="dataBox" style="vertical-align: central">
+                <label style="vertical-align: central">Жанры</label><br />
+                <select multiple="multiple">
+                    <option>Rock</option>
+                    <option>Blues</option>
+                    <option>Funk</option>
+                    <option>Jazz</option>
+                </select>
+            </div>*@
+
+        <div class="dataBox">
+            <input type="submit" value="Сохранить" />
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="Index">Вернуться</a>
+</div>

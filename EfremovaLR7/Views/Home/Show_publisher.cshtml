@@ -1,0 +1,30 @@
+﻿@model Publisher;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+</html>
+<div class="instr-block">
+    <div>
+        <a asp-action="Index">Вернуться на главную</a>
+    </div>
+    <h2>Компания</h2>
+    @Html.HiddenFor(m => m.Id)
+    <div style="font-weight:600">Название издательства: </div>
+    <div>@Model.Name</div>
+    <br />
+    <div style="font-weight:600">Адрес: </div>
+    <div>@Model.Address</div>
+    <br />
+    <div>
+        <div style="font-weight:600">Книги:</div>
+        @foreach (var item in ViewData["Books"] as IQueryable<Book>)
+        {
+            @(item.Title+" "+item.Author) <br />
+        }
+    </div>
+    <br />
+    @Html.ActionLink("Редактировать издательство", "Edit_publisher", Model)
+</div>

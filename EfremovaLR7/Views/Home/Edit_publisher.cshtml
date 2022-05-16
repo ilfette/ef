@@ -1,0 +1,34 @@
+﻿@model Publisher;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/StyleSheet.css">
+</html>
+<div class="edit-block">
+    <div>
+        <a asp-action="Index">Вернуться на главную</a>
+    </div>
+    <h2>Компания</h2>
+    @using (Html.BeginForm("Edit_publisher", "Home"))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <div class="dataBox">
+            <label>Название компании</label><br />
+            @Html.TextBoxFor(m => m.Name, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Страна</label><br />
+            @Html.TextBoxFor(m => m.Address, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Номер</label><br />
+            @Html.TextBoxFor(m => m.Number, new { @class = "text-box" })
+        </div>
+        <br />
+        <div class="dataBox">
+            <input type="submit" value="Сохранить" />
+        </div>
+    }
+</div>
